@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.recycler_row.view.*
 
 class liste_adapter(val kisiListe : ArrayList<String>, var IdList : ArrayList<Int>):RecyclerView.Adapter<kisiHolder>(){
     class kisiHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): kisiHolder {
@@ -26,12 +25,9 @@ class liste_adapter(val kisiListe : ArrayList<String>, var IdList : ArrayList<In
             var action = kisiListesi_fragmentDirections.actionKisiListesiFragmentToKisiDetaylariFragment("kisigoster",IdList.get(position))
             Navigation.findNavController(it).navigate(action)
         }
-
     }
 
     override fun getItemCount(): Int {
         return kisiListe.size
-
     }
-
 }

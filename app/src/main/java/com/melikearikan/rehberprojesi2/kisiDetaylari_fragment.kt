@@ -29,24 +29,16 @@ class kisiDetaylari_fragment : Fragment() {
     var secilenBitmap :Bitmap? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_kisi_detaylari_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
 
         imageView2.setOnClickListener{
             gorselSec(it)
@@ -63,11 +55,9 @@ class kisiDetaylari_fragment : Fragment() {
                 kisiNumara_et.setText("")
                 kisiCinsiyet_et.setText("")
                 kisiHatTuru_et.setText("")
-
                 button.visibility = View.VISIBLE
                 var gorselSecmeArkaPlani = BitmapFactory.decodeResource(context?.resources,R.drawable.arkaplan)
                 imageView2.setImageBitmap(gorselSecmeArkaPlani)
-
             }else if(gelenBilgi == "kisigoster"){
                 button.visibility = View.INVISIBLE
                 val secilenId = kisiDetaylari_fragmentArgs.fromBundle(it).id
@@ -138,16 +128,12 @@ class kisiDetaylari_fragment : Fragment() {
                       }else{
                           secilenBitmap = MediaStore.Images.Media.getBitmap(it.contentResolver,secilenGorsel)
                           imageView2.setImageBitmap(secilenBitmap)
-
                       }
                    }
                }
-
            }catch (e: Exception){
                e.printStackTrace()
-
            }
-
        }
         super.onActivityResult(requestCode, resultCode, data)
     }
@@ -166,13 +152,8 @@ class kisiDetaylari_fragment : Fragment() {
 
             try {
                 context?.let {
-
-
                     var db = it.openOrCreateDatabase("rehber",Context.MODE_PRIVATE,null)
                     db.execSQL("CREATE TABLE IF NOT EXISTS kisiler(id INTEGER PRIMARY KEY,kisiad VARCHAR,kisinumara VARCHAR,kisicinsiyet VARCHAR,hatturu VARCHAR,gorsel BLOB)")
-                   //db.execSQL("INSERT INTO kisiler(kisiad,kisinumara,kisicinsiyet,hatturu,gorsel) VALUES('meryem','05061656568','kadin','sabit','byteDizisi')") // veri tabanına yeni veri eklemek için aynı satırı kopyala yapıştır yapıyrum
-
-
                     val sqlString = "INSERT INTO kisiler(kisiad,kisinumara,kisicinsiyet,hatturu,gorsel) VALUES(?,?,?,?,?)"
                     val statement = db.compileStatement(sqlString)
                     statement.bindString(1,kisiAdi)

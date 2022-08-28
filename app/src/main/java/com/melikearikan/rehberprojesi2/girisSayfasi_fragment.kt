@@ -10,10 +10,8 @@ import kotlinx.android.synthetic.main.fragment_giris_sayfasi_fragment.*
 
 
 class girisSayfasi_fragment : Fragment() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -33,23 +31,14 @@ class girisSayfasi_fragment : Fragment() {
         button3.setOnClickListener {
             rehber(it)
         }
-
-
     }
 
     fun kisiekle(view: View){
         var action = girisSayfasi_fragmentDirections.actionGirisSayfasiFragmentToKisiDetaylariFragment("kisiekle",0)
         Navigation.findNavController(view).navigate(action)
-
-
     }
     fun rehber(view: View){
         var action = girisSayfasi_fragmentDirections.actionGirisSayfasiFragmentToKisiListesiFragment()
         Navigation.findNavController(view).navigate(action)
-
-
     }
-
-
-
 }

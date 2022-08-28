@@ -15,14 +15,12 @@ import java.lang.Exception
 
 
 class kisiListesi_fragment : Fragment() {
-
     var kisiAdArrayList = ArrayList<String>()
     var kisiIDArrayList = ArrayList<Int>()
     private lateinit var listeAdapter : liste_adapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -35,7 +33,6 @@ class kisiListesi_fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         listeAdapter = liste_adapter(kisiAdArrayList,kisiIDArrayList)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = listeAdapter
@@ -48,9 +45,7 @@ class kisiListesi_fragment : Fragment() {
             activity?.let {
                 var db = it.openOrCreateDatabase("rehber", Context.MODE_PRIVATE,null)
                 db.execSQL("CREATE TABLE IF NOT EXISTS kisiler(id INTEGER PRIMARY KEY,kisiad VARCHAR,kisinumara VARCHAR,kisicinsiyet VARCHAR,hatturu VARCHAR,gorsel BLOB)")
-
                 var cursor = db.rawQuery("SELECT * FROM kisiler",null)
-
 
                 if (cursor.moveToFirst()) {
                     println("null değil")
@@ -85,7 +80,6 @@ class kisiListesi_fragment : Fragment() {
                     var hatturuDizisi = arrayOf("sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit","sabit")
                     var j = 0
                     for (i in BitmapDizisi){
-
                         if (i != null) {
                         val kucukBitmap = kucukBitmapOlustur(i!!, 500)
                         val outputStream = ByteArrayOutputStream()
@@ -101,32 +95,21 @@ class kisiListesi_fragment : Fragment() {
                             statement.execute()
                     }
                         j++
-
-
                     }
-
-
                 }
                 cursor.close()
             }
-
-
-
         }catch (e: Exception){
             e.printStackTrace()
         }
-
     }
-
     fun sqlVeriAlma(){
         try {
             activity?.let {
-
                 var db = it.openOrCreateDatabase("rehber", Context.MODE_PRIVATE,null)
                 var cursor = db.rawQuery("SELECT * FROM kisiler",null)
                 val kisiAdIndex = cursor.getColumnIndex("kisiad")
                 var kisiIDIndex = cursor.getColumnIndex("id")
-
                 kisiAdArrayList.clear()
                 kisiIDArrayList.clear()
 
@@ -134,7 +117,6 @@ class kisiListesi_fragment : Fragment() {
                     kisiAdArrayList.add(cursor.getString(kisiAdIndex))
                     kisiIDArrayList.add(cursor.getInt(kisiIDIndex))
                 }
-                 //kullanıcılar yeni yemek de eklicek haliyle veriler değişicek bu kod yeni bir veri geldiğini listeye söylicek ve recyclerView güncellenicek
                 cursor.close()
             }
         }catch (e:Exception){
