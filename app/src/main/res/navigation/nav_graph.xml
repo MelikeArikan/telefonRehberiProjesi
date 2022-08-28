@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/girisSayfasi_fragment">
+
+    <fragment
+        android:id="@+id/girisSayfasi_fragment"
+        android:name="com.melikearikan.rehberprojesi2.girisSayfasi_fragment"
+        android:label="fragment_giris_sayfasi_fragment"
+        tools:layout="@layout/fragment_giris_sayfasi_fragment" >
+        <action
+            android:id="@+id/action_girisSayfasi_fragment_to_kisiDetaylari_fragment"
+            app:destination="@id/kisiDetaylari_fragment" />
+        <action
+            android:id="@+id/action_girisSayfasi_fragment_to_kisiListesi_fragment"
+            app:destination="@id/kisiListesi_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kisiListesi_fragment"
+        android:name="com.melikearikan.rehberprojesi2.kisiListesi_fragment"
+        android:label="fragment_kisi_listesi_fragment"
+        tools:layout="@layout/fragment_kisi_listesi_fragment" >
+        <action
+            android:id="@+id/action_kisiListesi_fragment_to_kisiDetaylari_fragment"
+            app:destination="@id/kisiDetaylari_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kisiDetaylari_fragment"
+        android:name="com.melikearikan.rehberprojesi2.kisiDetaylari_fragment"
+        android:label="fragment_kisi_detaylari_fragment"
+        tools:layout="@layout/fragment_kisi_detaylari_fragment" >
+        <action
+            android:id="@+id/action_kisiDetaylari_fragment_to_kisiListesi_fragment"
+            app:destination="@id/kisiListesi_fragment" />
+        <argument
+            android:name="bilgi"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+</navigation>
